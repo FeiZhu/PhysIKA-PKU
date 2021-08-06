@@ -1,5 +1,17 @@
+/**
+ * @author     : He Xiaowei (Clouddon@sina.com)
+ * @date       : 2018-05-04
+ * @description: Declaration of Module class, base class of all Module types
+ * @version    : 1.0
+ *
+ * @author     : Zhu Fei (feizhu@pku.edu.cn)
+ * @date       : 2021-08-06
+ * @description: poslish code
+ * @version    : 1.1
+ */
+
 #pragma once
-#include "Core/Platform.h"
+
 #include <memory>
 #include <vector>
 #include <cassert>
@@ -8,12 +20,23 @@
 #include "Log.h"
 #include "Core/Typedef.h"
 #include "Core/DataTypes.h"
+#include "Core/Platform.h"
+#include "Framework/FieldTypes.h"
 #include "DeclareModuleField.h"
-#include "../FieldTypes.h"
 
 namespace PhysIKA {
 class Node;
 
+/**
+ * Module, base class of all Module types.
+ * A Module is some computation performed on host Node.
+ *
+ * Usage:
+ * 1. Define a Module instance
+ * 2. Attach the Module to some Node via calling Node API
+ * 3. The Module's computation will be automatically called in simulation loop
+ *    while traversing the SceneGraph
+ */
 class Module : public Base
 {
 public:
@@ -27,7 +50,7 @@ public:
 
     /**
      * @brief Check the completeness of input fields
-     * 
+     *
      * @return true, if all input fields are appropriately set.
      * @return false, if any of the input field is empty.
      */
